@@ -62,22 +62,22 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 // validateJWTFromComputeEngine validates a JWT found in the
 // "x-goog-iap-jwt-assertion" header.
-func validateJWTFromComputeEngine(w io.Writer, iapJWT, projectNumber, backendServiceID string) error {
-	// iapJWT := "YmFzZQ==.ZW5jb2RlZA==.and0" // req.Header.Get("X-Goog-IAP-JWT-Assertion")
-	/projectNumber := "123456789"
-	// backendServiceID := "backend-service-id"
-	ctx := context.Background()
-	aud := fmt.Sprintf("/projects/%s/global/backendServices/%s", projectNumber, backendServiceID)
+// func validateJWTFromComputeEngine(w io.Writer, iapJWT, projectNumber, backendServiceID string) error {
+// 	// iapJWT := "YmFzZQ==.ZW5jb2RlZA==.and0" // req.Header.Get("X-Goog-IAP-JWT-Assertion")
+// 	/projectNumber := "123456789"
+// 	// backendServiceID := "backend-service-id"
+// 	ctx := context.Background()
+// 	aud := fmt.Sprintf("/projects/%s/global/backendServices/%s", projectNumber, backendServiceID)
 
-	payload, err := idtoken.Validate(ctx, iapJWT, aud)
-	if err != nil {
-			return fmt.Errorf("idtoken.Validate: %v", err)
-	}
+// 	payload, err := idtoken.Validate(ctx, iapJWT, aud)
+// 	if err != nil {
+// 			return fmt.Errorf("idtoken.Validate: %v", err)
+// 	}
 
-	// payload contains the JWT claims for further inspection or validation
-	fmt.Fprintf(w, "payload: %v", payload)
+// 	// payload contains the JWT claims for further inspection or validation
+// 	fmt.Fprintf(w, "payload: %v", payload)
 
-	return nil
-}
+// 	return nil
+// }
 // [END run_helloworld_service]
 // [END cloudrun_helloworld_service]
